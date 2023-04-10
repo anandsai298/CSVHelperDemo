@@ -6,6 +6,7 @@ class program
     static void Main(string[] args)
     {
         Operation.ImplementCSVHandling();
+        Operation.ImplementCSVToJson();
     }
 }
 
