@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace CSVHelperDemo
 {
@@ -50,6 +50,18 @@ namespace CSVHelperDemo
             }
             var json = JsonConvert.SerializeObject(records);
             File.WriteAllText(exportFilePath, json);
+        }
+        public static void ImplementJsonToCSV()
+        {
+            Console.WriteLine("reading Json file");
+            string importFilePath = @"F:\CSVHelperDemo\CSVHelperDemo\CSVHelperDemo\csvFile2.json";
+            string exportFilePath = @"F:\CSVHelperDemo\CSVHelperDemo\CSVHelperDemo\csvFile3.csv";
+            List<Model> records= JsonConvert.DeserializeObject<List<Model>>(File.ReadAllText(importFilePath));
+            using(var writer=new StreamWriter(exportFilePath))
+            using(var csvwriter=new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvwriter.WriteRecords(records);
+            }
         }
     }
 }

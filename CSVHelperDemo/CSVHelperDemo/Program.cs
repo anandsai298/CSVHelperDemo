@@ -7,6 +7,7 @@ class program
     {
         Operation.ImplementCSVHandling();
         Operation.ImplementCSVToJson();
+        Operation.ImplementJsonToCSV();
     }
 }
 
